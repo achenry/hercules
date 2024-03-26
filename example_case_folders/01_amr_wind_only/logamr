@@ -1,0 +1,1 @@
+./batch_script.sh: line 33: mpirun: command not found

@@ -142,7 +142,7 @@ class StandinData:
     def from_amr_openfast(self):
         pass
 
-    def save(self):
+    def save(self, fn="amr_standin_data.csv"):
         df_dict = {
             "time": self.time,
             "amr_wind_speed": self.amr_wind_speed,
@@ -153,7 +153,7 @@ class StandinData:
             df_dict.update({f"turbine_power_{i}": self.turbine_powers[:, i]})
 
         df = pd.DataFrame(df_dict)
-        df.to_csv(os.path.join(self.standin_data_save_path, "amr_standin_data.csv"))
+        df.to_csv(os.path.join(self.standin_data_save_path, fn))
 
     def plot(self):
         fig, ax = plt.subplots(3, 1, sharex="col")
@@ -200,36 +200,38 @@ if __name__ == "__main__":
     # SD.plot()
 
     # generate standin data file from user-defined timeseries
+    num_turbines = 100
     fpaths = {
         "amr_inp_path": 
-            "example_case_folders/06_amr_wind_standin_and_battery/amr_input.inp",
+            # "example_case_folders/06_amr_wind_standin_and_battery/amr_input.inp",
+            f"/Users/ahenry/Documents/toolboxes/wind-hybrid-open-controller/examples/mpc_wake_steering_florisstandin/amr_input_{num_turbines}.inp",
         # "amr_out_path":
         #       "/Users/ztully/Documents/HERCULES/hercules_project/amr_wind_runs/2023_10_20",
         "herc_inp_path":
-            "example_case_folders/06_amr_wind_standin_and_battery/hercules_input_000.yaml",
+            # "example_case_folders/06_amr_wind_standin_and_battery/hercules_input_000.yaml",
+            f"/Users/ahenry/Documents/toolboxes/wind-hybrid-open-controller/examples/mpc_wake_steering_florisstandin/hercules_input_{num_turbines}.yaml",
         "save_path": 
-            "example_case_folders/06_amr_wind_standin_and_battery",
+            # "example_case_folders/06_amr_wind_standin_and_battery",
+             f"/Users/ahenry/Documents/toolboxes/wind-hybrid-open-controller/examples/mpc_wake_steering_florisstandin"
     }
     SD = StandinData(method="user", **fpaths)
 
     # generate user inputs
-
-    num_turbines = 2
     time_start = 0
-    time_stop = 900
+    time_stop = 3600
     time_delta = 0.5
 
-    turb_rating = 1000
+    turb_rating = 5000
     time = np.arange(time_start, time_stop, time_delta)
-    amr_wind_speed = np.linspace(0, 20, len(time))
-    amr_wind_direction = np.linspace(200, 240, len(time))
+    amr_wind_speed = np.linspace(6, 12, len(time))
+    amr_wind_direction = np.linspace(255, 285, len(time))
 
     turbine_powers = np.zeros([len(time), num_turbines])
     for i in range(len(time)):
         turb_powers = (
             np.ones(num_turbines) * amr_wind_speed[i] ** 3 + np.random.rand(num_turbines) * 50
         )
-        turb_powers[int(num_turbines / 2) :] = 0.75 * turb_powers[int(num_turbines / 2) :]
+        turb_powers[int(num_turbines / 3) :] = 0.75 * turb_powers[int(num_turbines / 3) :]
         turb_powers = [np.min([turb_rating, tp]) for tp in turb_powers]
         turbine_powers[i, :] = turb_powers
 
@@ -241,4 +243,4 @@ if __name__ == "__main__":
     }
 
     SD.generate_standin_data(my_inputs)
-    SD.save()
+    SD.save(fn=f"amr_standin_data_{num_turbines}.csv")
