@@ -42,7 +42,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -211,8 +211,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="examples_overview.html">Examples Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/05_floris_wind_standin_and_electrolyzer.html">Example 05: FLORIS Wind Standin and Electrolyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/06_amr_wind_standin_and_battery.html">Example 06: AMR Wind Standin and Battery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/07_amr_wind_standin_and_solar_pysam.html">Example 07: AMR Wind Standin and Solar PySAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/07_floris_standin_and_solar_pysam.html">Example 07: FLORIS Standin and Solar PySAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/08_floris_only.html">Example 08: FLORIS Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/09_amr_wind_openfast.html">Example 09: AMR Wind with OpenFAST</a></li>
 </ul>
 
     </div>
@@ -501,12 +504,6 @@ the electrolyzer, use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nrel</span><span class="o">-</span><span class="n">pysam</span><span class="o">==</span><span class="mf">4.2.0</span>
 </pre></div>
 </div>
-<p>You may also want to run the FLORIS standin for AMR-Wind for a steady-state representation
-of wind farm flows. In this case, run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NREL</span><span class="o">/</span><span class="n">floris</span><span class="o">.</span><span class="n">git</span><span class="nd">@v4</span>
-</pre></div>
-</div>
-<p>to get the correct branch of FLORIS installed.</p>
 <p>If you run hercules and get an error that <code class="docutils literal notranslate"><span class="pre">pyyaml</span></code> is missing, you may also need to install it using</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyyaml</span>
 </pre></div>
