@@ -230,7 +230,7 @@ class Emulator(FederateAgent):
             wind_speed_amr_wind,
             wind_direction_amr_wind,
         ) = subscription_value[:3]
-        print("NUM_TURBINES AND SUBSCRIPTION_VALUE", self.num_turbines, subscription_value)
+        # print("NUM_TURBINES AND SUBSCRIPTION_VALUE", self.num_turbines, subscription_value)
         turbine_power_array = subscription_value[3 : 3 + self.num_turbines]
         turbine_wd_array = subscription_value[3 + self.num_turbines:3 + 2*self.num_turbines]
         # turbine_yaw_angle_array = subscription_value[3 + 2*self.num_turbines:]
