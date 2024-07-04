@@ -31,7 +31,7 @@ DESCRIPTION = "Python front-end to the emulator."
 URL = "https://github.com/NREL/hercules"
 EMAIL = "paul.fleming@nrel.gov"
 AUTHOR = "NREL National Wind Technology Center"
-REQUIRES_PYTHON = ">=3.6.0,<3.12.0"
+REQUIRES_PYTHON = ">=3.6.0,<=3.12.3"
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -39,7 +39,7 @@ REQUIRED = [
     "matplotlib~=3.0",
     "pandas~=2.0",
     "floris~=4.0",
-    "nrel-pysam~=4.2",
+    "nrel-pysam~=5.1.0",
     # "dash>=2.0.0",
     # GUI Stuff
     # "tkinter", # Comes with python?
